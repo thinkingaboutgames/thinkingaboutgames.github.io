@@ -12,6 +12,16 @@ body, h1, label, ul, li, fieldset {
   background: transparent;
 }
 
+@font-face {
+ font-family: Blox;
+ src: url("fonts/Blox2.eot");
+}
+
+@font-face {
+ font-family: Blox;
+ src: url("fonts/Blox2.ttf");
+}
+
 body {
   font-family: sans-serif;
   background: #005EFF;
@@ -36,17 +46,60 @@ header {
 }
 
 h1 {
+  font-family: "Blox";
   font-size: 36px;
 }
 
 .tag {
   float: left;
   padding: 8px;
+  color: red;
 }
 
 .ef {
   float: left;
-  padding: 8px 8px 8px 0px;
+  padding: 8px;
+  color: #FFD900;
+}
+
+form {
+  margin: 0 auto;
+  width: 90%;
+  padding: 20px;
+  background: lightgrey;
+}
+
+label, input {
+  display: block;
+}
+
+label {
+  text-align: left;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: inline-block;
+}
+
+input[type="text"], input[type="email"] {
+  width: 200px;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+.id-field-section {
+  padding-bottom: 10px;
+}
+
+.id-field {
+  float: left;
+}
+
+.id-field:nth-child(even) {
+  float: right;
 }
 
 @media (max-width: 630px) {
@@ -60,6 +113,17 @@ h1 {
   }
 }
 
+@media (max-width: 550px) {
+  fieldset {
+    display: block;
+  }
+  .id-field, .id-field:nth-child(even) {
+    float: none;
+    width: 210px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 480px) {
   header {
     width: 360px;
@@ -68,42 +132,4 @@ h1 {
   .tag, .ef {
     font-size: 30px;
   }
-}
-
-form {
-  margin: 0 auto;
-  width: 90%;
-  padding: 20px;
-  background: lightgrey;
-}
-
-label, input {
-  display: block;
-  margin: 0 auto;
-}
-
-input[type="radio"] {
-  display: inline-block;
-}
-
-input[type="text"] {
-  width: 200px;
-  padding: 3px;
-  border-radius: 3px;
-}
-
-.id-fields {
-
-}
-
-.id-field-section {
-
-}
-
-.id-field {
-  float: left;
-}
-
-.id-field:nth-child(even) {
-  float: right;
 }
