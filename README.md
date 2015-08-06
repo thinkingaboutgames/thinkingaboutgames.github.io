@@ -5,6 +5,7 @@ I used Formspree to send emails without a backend. Otherwise this is a simple st
 
 ## TODO
 presence verification
+change value of button to Submit
 
 ## Questions/Decisions
 Caching
