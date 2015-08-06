@@ -26,8 +26,12 @@
         <li class="id-field-section clearfix">
           <fieldset class="id-field">
             <label for="semester">Semester</label>
-            <input type="radio" name="semester" value="Fall">Fall
-            <input type="radio" name="semester" value="Spring">Spring
+            <fieldset class="radio-buttons clearfix">
+              <input type="radio" name="semester" id="fall" value="Fall">
+              <label class="fall" for="fall">Fall</label>
+              <input type="radio" name="semester" id="spring" value="Spring">
+              <label class="spring" for="spring">Spring</label>
+            </fieldset>
           </fieldset>
           <fieldset class="id-field">
             <label for="_replyto">Your Email</label>

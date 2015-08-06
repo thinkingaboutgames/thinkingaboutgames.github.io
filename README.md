@@ -3,6 +3,9 @@
 ## Technologies
 I used Formspree to send emails without a backend. Otherwise this is a simple static page.
 
+## TODO
+presence verification
+
 ## Questions/Decisions
 Caching
 replyto
