@@ -1,3 +1,73 @@
 body, h1, label {
-  
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+
+  background: transparent;
+}
+
+body {
+  font-family: sans-serif;
+  background: #005EFF;
+  text-align: center;
+  padding: 20px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header {
+  margin: 0 auto;
+  background: white;
+  width: 593px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.tag {
+  float: left;
+  padding: 8px;
+}
+
+.ef {
+  float: left;
+  padding: 8px 8px 8px 0px;
+}
+
+@media (max-width: 630px) {
+  header {
+    width: 438px;
+  }
+
+  .tag, .ef {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    width: 360px;
+  }
+
+  .tag, .ef {
+    font-size: 30px;
+  }
+}
+
+form {
+  margin: 0 auto;
+  width: 90%;
+  background: white;
 }
