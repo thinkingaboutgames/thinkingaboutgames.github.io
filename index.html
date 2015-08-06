@@ -12,15 +12,29 @@
     </header>
     <form action="//formspree.io/fmw212@nyu.edu"
       method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name">
-      <label for="name">Year</label>
-      <input type="text" name="name">
-      <label for="semester">Semester</label>
-      <input type="radio" name="semester" value="Fall">Fall
-      <input type="radio" name="semester" value="Spring">Spring
-      <label for="_replyto">Your Email</label>
-      <input type="email" name="_replyto">
+      <ul class="id-fields">
+        <li class="id-field-section clearfix">
+          <fieldset class="id-field">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+          </fieldset>
+          <fieldset class="id-field">
+            <label for="name">Year</label>
+            <input type="text" name="name">
+          </fieldset>
+        </li>
+        <li class="id-field-section clearfix">
+          <fieldset class="id-field">
+            <label for="semester">Semester</label>
+            <input type="radio" name="semester" value="Fall">Fall
+            <input type="radio" name="semester" value="Spring">Spring
+          </fieldset>
+          <fieldset class="id-field">
+            <label for="_replyto">Your Email</label>
+            <input type="email" name="_replyto">
+          </fieldset>
+        </li>
+      </ul>
       <label for="essay">Essay</label>
       <textarea name="essay" rows="" cols=""></textarea>
       <input type="submit" value="Send">

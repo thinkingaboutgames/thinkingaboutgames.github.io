@@ -1,4 +1,4 @@
-body, h1, label {
+body, h1, label, ul, li, fieldset {
   border: 0;
   margin: 0;
   padding: 0;
@@ -23,6 +23,10 @@ body {
   content: "";
   display: block;
   clear: both;
+}
+
+ul {
+  list-style: none;
 }
 
 header {
@@ -69,5 +73,37 @@ h1 {
 form {
   margin: 0 auto;
   width: 90%;
-  background: white;
+  padding: 20px;
+  background: lightgrey;
+}
+
+label, input {
+  display: block;
+  margin: 0 auto;
+}
+
+input[type="radio"] {
+  display: inline-block;
+}
+
+input[type="text"] {
+  width: 200px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.id-fields {
+
+}
+
+.id-field-section {
+
+}
+
+.id-field {
+  float: left;
+}
+
+.id-field:nth-child(even) {
+  float: right;
 }
