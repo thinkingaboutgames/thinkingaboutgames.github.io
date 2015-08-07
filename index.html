@@ -42,12 +42,13 @@
         </li>
       </ul>
       <label for="essay">Essay</label>
-      <textarea name="essay" id="essay-area" rows="" cols=""></textarea>
+      <textarea name="essay" id="essay-area"></textarea>
       <input class="submit" type="submit" value="Send">
     </form>
   </body>
 </html>
 <script>
   CKEDITOR.replace('essay-area');
+  CKEDITOR.config.height = 500;
   // count 3 <p> tags, 300 words, name, yr, semester before submit
 </script>

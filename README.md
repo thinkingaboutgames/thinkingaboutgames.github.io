@@ -6,6 +6,9 @@ I used Formspree to send emails without a backend, and CKEditor to add  word-pro
 ## TODO
 presence verification
 change value of button to Submit
+- build email title string
+- add maxWordCount
+- check if autosave works in production site
 
 ## Questions/Decisions
 Caching
