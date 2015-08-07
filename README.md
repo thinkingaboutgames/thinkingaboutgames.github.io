@@ -1,7 +1,7 @@
 # Thinking About Games: Essay Form
 
 ## Technologies
-I used Formspree to send emails without a backend. I used CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out!
+I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! I added the AutoSave and WordCount plugins and removed a few of the included plugins of the full preset to make the customized editor you see in this project.
 
 ## TODO
 presence verification
