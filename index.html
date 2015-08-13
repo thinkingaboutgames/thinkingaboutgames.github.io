@@ -50,5 +50,14 @@
 <script>
   CKEDITOR.replace('essay-area');
   CKEDITOR.config.height = 500;
+  var editor = CKEDITOR.instances["essay-area"];
+  var essayHTML = editor.getData();
+  // need to wrap html in a div to get the first level elements (in this case p's)
+  if ($('<div>' + essayHTML + '</div>').find("p").length === 4) {
+
+  }
+  if (editor.plugins.wordcount.wordCount === 300) {
+
+  }
   // count 3 <p> tags, 300 words, name, yr, semester before submit
 </script>
