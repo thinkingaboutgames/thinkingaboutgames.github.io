@@ -57,6 +57,7 @@
   CKEDITOR.config.height = 500;
 
   $("form").on("submit", function (event) {
+    // get all data from the form
     var editor = CKEDITOR.instances["essay-area"];
     var essayHTML = editor.getData();
     // need to wrap html in a div to get the first level elements (in this case p's)
@@ -67,13 +68,18 @@
     var year = $("#year").val();
     var email = $("#email").val();
     var semester = $('input[name=semester]:checked').val();
-
-    if (numParagraphs === 4 && wordCount === 300 && !!name && !!year &&
-        !!email && typeof semester !== "undefined") {
+    // successful submission condition
+    if (numParagraphs === 4 && wordCount === 300 && name && year && email &&
+        typeof semester !== "undefined") {
       $("#subject").val(name + " [" + semester + " " + year + "]");
       $("#cc").val(email);
       $("#next").val(window.location.href + "success.html");
       return;
+    }
+    // if the user submits with errors a second time before 7 seconds are up
+    if (typeof window.timeoutID !== "undefined") {
+      window.clearTimeout(timeoutID);
+      $("#errors").empty();
     }
     // needed for IE 8 and 9
     if (!name || !year || !email || typeof semester === "undefined") {
@@ -83,11 +89,12 @@
       $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
     }
     if (numParagraphs !== 4) {
-      $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>");
+      $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>" +
+                          "<li>(This will show up as 4 paragraphs in the editor)</li>");
     }
-
+    // show errors
     $("#errors").removeClass("hidden");
-    window.setTimeout(function () {
+    window.timeoutID = window.setTimeout(function () {
       $("#errors").addClass("hidden").empty();
     }, 7000);
     event.preventDefault();
