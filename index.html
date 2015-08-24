@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>T.A.G.</title>
     <link href="application.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
   </head>
@@ -46,7 +47,7 @@
       <input type="hidden" id="subject" name="_subject"/>
       <input type="hidden" id="cc" name="_cc"/>
       <input type="text" name="_gotcha" style="display:none" />
-      <!-- <input type="hidden" name="_next" value="" /> -->
+      <input type="hidden" name="_next" value="success.html" />
       <input class="submit" type="submit" value="Submit">
     </form>
   </body>
@@ -73,10 +74,11 @@
       $("#cc").val(email);
       return;
     }
-
+    if (!name || !year || !email || typeof semester === "undefined") {
+      $("#errors").append("<li>Please fill in all fields.</li>");
+    }
     if (wordCount !== 300) {
       $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
-
     }
     if (numParagraphs !== 4) {
       $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>");

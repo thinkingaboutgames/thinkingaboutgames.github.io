@@ -76,7 +76,7 @@ label {
   text-align: left;
   font-weight: 700;
   font-size: 20px;
-  color: white;
+  color: #fff;
 }
 
 .fall, .spring {
@@ -180,4 +180,29 @@ textarea {
   .tag, .ef {
     font-size: 30px;
   }
+}
+
+/*errors*/
+
+#errors {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: red;
+  color: #fff;
+}
+
+/*success page*/
+
+#success {
+  font-family: "Nunito", sans-serif;
+}
+
+#success h1 {
+  font-weight: 700;
+}
+
+#success .message {
+  font-weight: 400;
 }
