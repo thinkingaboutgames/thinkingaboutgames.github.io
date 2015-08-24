@@ -4,25 +4,22 @@
 I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the API documentation is not very good. I added the AutoSave and WordCount plugins and removed a few of the included plugins of the full preset to make the customized editor you see in this project.
 
 ## TODO
-presence verification
-change value of button to Submit
-change 300/300 to green
-- build email title string
-- add wordcountreached! popup when wordcount === 300
-- check if autosave works in production site
-replyto
+- change 300/300 to green
+- test Word pasting
+- change font
+- style button
+- test in safari
+- remove autosave plugin
+- add meta tag for mobile
 
 ## TODO at meetup
 - set up domain with heroku
 - confirm email address with formspree
 
-## Questions/Decisions
-Caching
-
 ## Features
 
 ## Testing Formspree
-I realized that Formspree would not work if I tried to submit the form locally. I created a gh-pages branch and pushed to the corresponding remote (which I named Test, which I will now use for testing future projects that require a real domain) to test Formspree. 
+I realized that Formspree would not work if I tried to submit the form locally. I created a gh-pages branch and pushed to the corresponding remote (which I named Test, which I will now use for testing future projects that require a real domain) to test Formspree.
 
 ## Configuring the WordCount plugin
 I went into the ckeditor.js file and set maxWordCount to 300 and hardLimit to false to prevent the editor from preventing you to type more than 300 words (if you did this using the minified version, change the 0 to a 1).

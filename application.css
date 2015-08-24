@@ -101,7 +101,7 @@ input[type="text"], input[type="email"] {
   width: 200px;
   padding: 3px;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .id-field-section {
@@ -191,6 +191,15 @@ textarea {
   transform: translateX(-50%);
   background: red;
   color: #fff;
+  padding: 10px;
+}
+
+#errors li {
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*success page*/
