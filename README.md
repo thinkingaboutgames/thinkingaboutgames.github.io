@@ -6,15 +6,23 @@ I used Formspree to send emails without a backend, and CKEditor to add  word-pro
 ## TODO
 presence verification
 change value of button to Submit
+change 300/300 to green
 - build email title string
 - add wordcountreached! popup when wordcount === 300
 - check if autosave works in production site
+replyto
+
+## TODO at meetup
+- set up domain with heroku
+- confirm email address with formspree
 
 ## Questions/Decisions
 Caching
-replyto
 
 ## Features
+
+## Testing Formspree
+I realized that Formspree would not work if I tried to submit the form locally. I created a gh-pages branch and pushed to the corresponding remote (which I named Test, which I will now use for testing future projects that require a real domain) to test Formspree. 
 
 ## Configuring the WordCount plugin
 I went into the ckeditor.js file and set maxWordCount to 300 and hardLimit to false to prevent the editor from preventing you to type more than 300 words (if you did this using the minified version, change the 0 to a 1).

@@ -12,17 +12,17 @@
       <h1 class="tag">Thinking About Games</h1>
       <h1 class="ef">essay form</h1>
     </header>
-    <form action="//formspree.io/fmw212@nyu.edu"
-      method="POST">
+    <ul id="errors" class="hidden"></ul>
+    <form action="//formspree.io/fmw212@nyu.edu" method="POST">
       <ul class="id-fields">
         <li class="id-field-section clearfix">
           <fieldset class="id-field">
             <label for="name">Name</label>
-            <input type="text" name="name">
+            <input type="text" id="name" name="name">
           </fieldset>
           <fieldset class="id-field">
-            <label for="name">Year</label>
-            <input type="text" name="name">
+            <label for="year">Year</label>
+            <input type="text" id="year" name="year">
           </fieldset>
         </li>
         <li class="id-field-section clearfix">
@@ -37,27 +37,55 @@
           </fieldset>
           <fieldset class="id-field">
             <label for="_replyto">Your Email</label>
-            <input type="email" name="_replyto">
+            <input type="email" id="email" name="_replyto">
           </fieldset>
         </li>
       </ul>
       <label for="essay">Essay</label>
       <textarea name="essay" id="essay-area"></textarea>
-      <input class="submit" type="submit" value="Send">
+      <input type="hidden" id="subject" name="_subject"/>
+      <input type="hidden" id="cc" name="_cc"/>
+      <input type="text" name="_gotcha" style="display:none" />
+      <!-- <input type="hidden" name="_next" value="" /> -->
+      <input class="submit" type="submit" value="Submit">
     </form>
   </body>
 </html>
 <script>
   CKEDITOR.replace('essay-area');
   CKEDITOR.config.height = 500;
-  var editor = CKEDITOR.instances["essay-area"];
-  var essayHTML = editor.getData();
-  // need to wrap html in a div to get the first level elements (in this case p's)
-  if ($('<div>' + essayHTML + '</div>').find("p").length === 4) {
 
-  }
-  if (editor.plugins.wordcount.wordCount === 300) {
+  $("form").on("submit", function (event) {
+    var editor = CKEDITOR.instances["essay-area"];
+    var essayHTML = editor.getData();
+    // need to wrap html in a div to get the first level elements (in this case p's)
+    var numParagraphs = $('<div>' + essayHTML + '</div>').find("p").length;
+    var wordCount = editor.plugins.wordcount.wordCount;
 
-  }
-  // count 3 <p> tags, 300 words, name, yr, semester before submit
+    var name = $("#name").val();
+    var year = $("#year").val();
+    var email = $("#email").val();
+    var semester = $('input[name=semester]:checked').val();
+
+    if (numParagraphs === 4 && wordCount === 300 && !!name && !!year &&
+        !!email && typeof semester !== "undefined") {
+      $("#subject").val(name + ":" + semester + " " + year);
+      $("#cc").val(email);
+      return;
+    }
+
+    if (wordCount !== 300) {
+      $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
+
+    }
+    if (numParagraphs !== 4) {
+      $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>");
+    }
+
+    $("#errors").removeClass("hidden");
+    window.setTimeout(function () {
+      $("#errors").addClass("hidden").empty();
+    }, 3000);
+    event.preventDefault();
+  });
 </script>
