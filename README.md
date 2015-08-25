@@ -4,7 +4,9 @@
 I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the API documentation is not very good. I added the AutoSave and WordCount plugins and removed a few of the included plugins of the full preset to make the customized editor you see in this project.
 
 ## TODO
+- add [TAG] to subject
 - test Word pasting
+- remove save button
 - change font
 - style button
 - test in safari
@@ -14,6 +16,7 @@ I used Formspree to send emails without a backend, and CKEditor to add  word-pro
 ## TODO at meetup
 - set up domain with heroku
 - confirm email address with formspree
+- 4 p's w title or title + 3 p's? correct error msg too if 3 p's
 
 ## Features
 
