@@ -56,6 +56,7 @@
   CKEDITOR.config.height = 500;
   CKEDITOR.config.removePlugins = 'autosave,save';
   CKEDITOR.replace('essay-area');
+  window.editor = CKEDITOR.instances["essay-area"];
 
   if(!localStorage.getItem('essay')) {
     populateStorage();
@@ -64,22 +65,20 @@
   }
 
   function populateStorage() {
-    var editor = CKEDITOR.instances["essay-area"];
     localStorage.setItem('essay', editor.getData());
     loadEssay();
   }
 
-  function setStyles() {
+  function loadEssay() {
     var currentHTML = localStorage.getItem('essay');
     editor.setData(currentHTML);
   }
 
-  CKEDITOR.instances["essay-area"].on('change', populateStorage);
+  editor.on('change', populateStorage);
 
   $("form").on("submit", function (event) {
     event.preventDefault();
     // get all data from the form
-    var editor = CKEDITOR.instances["essay-area"];
     var essayHTML = editor.getData();
     // need to wrap html in a div to get the first level elements (in this case p's)
     var numParagraphs = $('<div>' + essayHTML + '</div>').find("p").length;
