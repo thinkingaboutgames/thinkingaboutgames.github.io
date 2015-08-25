@@ -14,7 +14,7 @@
       <h1 class="ef">essay form</h1>
     </header>
     <ul id="errors" class="hidden"></ul>
-    <form action="//formspree.io/fmw212@nyu.edu" method="POST">
+    <form>
       <ul class="id-fields">
         <li class="id-field-section clearfix">
           <fieldset class="id-field">
@@ -53,10 +53,31 @@
   </body>
 </html>
 <script>
-  CKEDITOR.replace('essay-area');
   CKEDITOR.config.height = 500;
+  CKEDITOR.config.removePlugins = 'autosave,save';
+  CKEDITOR.replace('essay-area');
+
+  if(!localStorage.getItem('essay')) {
+    populateStorage();
+  } else {
+    loadEssay();
+  }
+
+  function populateStorage() {
+    var editor = CKEDITOR.instances["essay-area"];
+    localStorage.setItem('essay', editor.getData());
+    loadEssay();
+  }
+
+  function setStyles() {
+    var currentHTML = localStorage.getItem('essay');
+    editor.setData(currentHTML);
+  }
+
+  CKEDITOR.instances["essay-area"].on('change', populateStorage);
 
   $("form").on("submit", function (event) {
+    event.preventDefault();
     // get all data from the form
     var editor = CKEDITOR.instances["essay-area"];
     var essayHTML = editor.getData();
@@ -71,32 +92,43 @@
     // successful submission condition
     if (numParagraphs === 4 && wordCount === 300 && name && year && email &&
         typeof semester !== "undefined") {
-      $("#subject").val(name + " [" + semester + " " + year + "]");
+      $("#subject").val(name + " [TAG][" + semester + " " + year + "]");
       $("#cc").val(email);
       $("#next").val(window.location.href + "success.html");
-      return;
+      $.ajax({
+        url: "//formspree.io/fmw212@nyu.edu",
+        method: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        beforeSend: function() {
+          // alert("loading");
+        },
+        success: function(data) {
+          localStorage.removeItem("essay");
+        }
+      });
+    } else {
+      // if the user submits with errors a second time before 7 seconds are up
+      if (typeof window.timeoutID !== "undefined") {
+        window.clearTimeout(timeoutID);
+        $("#errors").empty();
+      }
+      // needed for IE 8 and 9
+      if (!name || !year || !email || typeof semester === "undefined") {
+        $("#errors").append("<li>Please fill in all fields.</li>");
+      }
+      if (wordCount !== 300) {
+        $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
+      }
+      if (numParagraphs !== 4) {
+        $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>" +
+                            "<li>(This will show up as 4 paragraphs in the editor)</li>");
+      }
+      // show errors
+      $("#errors").removeClass("hidden");
+      window.timeoutID = window.setTimeout(function () {
+        $("#errors").addClass("hidden").empty();
+      }, 7000);
     }
-    // if the user submits with errors a second time before 7 seconds are up
-    if (typeof window.timeoutID !== "undefined") {
-      window.clearTimeout(timeoutID);
-      $("#errors").empty();
-    }
-    // needed for IE 8 and 9
-    if (!name || !year || !email || typeof semester === "undefined") {
-      $("#errors").append("<li>Please fill in all fields.</li>");
-    }
-    if (wordCount !== 300) {
-      $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
-    }
-    if (numParagraphs !== 4) {
-      $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>" +
-                          "<li>(This will show up as 4 paragraphs in the editor)</li>");
-    }
-    // show errors
-    $("#errors").removeClass("hidden");
-    window.timeoutID = window.setTimeout(function () {
-      $("#errors").addClass("hidden").empty();
-    }, 7000);
-    event.preventDefault();
   });
 </script>
