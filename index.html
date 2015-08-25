@@ -60,13 +60,13 @@
 
   if(!localStorage.getItem('essay')) {
     populateStorage();
+    loadEssay();
   } else {
     loadEssay();
   }
 
   function populateStorage() {
     localStorage.setItem('essay', editor.getData());
-    loadEssay();
   }
 
   function loadEssay() {
@@ -74,7 +74,26 @@
     editor.setData(currentHTML);
   }
 
-  editor.on('change', populateStorage);
+  editor.on('change', startTimer);
+
+  function startTimer (event) {
+    if (timeoutID2) {
+      clearTimeout(timeoutID2);
+    }
+    window.timeoutID2 = setTimeout(onTimer, 10000, event);
+  }
+
+  window.savingActive = false;
+
+  function onTimer (event) {
+    if (savingActive) {
+      startTimer(event);
+    } else if (event.editor.checkDirty()) {
+      savingActive = true;
+      populateStorage();
+      savingActive = false;
+    }
+  };
 
   $("form").on("submit", function (event) {
     event.preventDefault();
