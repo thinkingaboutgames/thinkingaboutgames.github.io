@@ -48,7 +48,6 @@
       <input type="hidden" id="subject" name="_subject"/>
       <input type="hidden" id="cc" name="_cc"/>
       <input type="text" name="_gotcha" style="display:none"/>
-      <input type="hidden" id="next" name="_next"/>
       <input class="submit" type="submit" value="Submit">
     </form>
   </body>
@@ -133,7 +132,6 @@
         typeof semester !== "undefined") {
       $("#subject").val(name + " [TAG][" + semester + " " + year + "]");
       $("#cc").val(email);
-      $("#next").val(window.location.href + "success.html");
       $.ajax({
         url: "//formspree.io/fmw212@nyu.edu",
         method: 'POST',
@@ -144,6 +142,7 @@
         },
         success: function(data) {
           if (supportsLocalStorage()) { localStorage.removeItem("essay"); };
+          window.location.href = window.location.href + "success.html";
         }
       });
     } else {
