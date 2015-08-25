@@ -1,4 +1,4 @@
-body, h1, label, ul, li, fieldset {
+body, h1, h3, label, ul, li, fieldset {
   border: 0;
   margin: 0;
   padding: 0;
@@ -180,6 +180,18 @@ textarea {
   .tag, .ef {
     font-size: 30px;
   }
+}
+
+/*save*/
+
+#save {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: green;
+  color: #fff;
+  padding: 10px;
 }
 
 /*errors*/

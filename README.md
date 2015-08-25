@@ -1,17 +1,17 @@
 # Thinking About Games: Essay Form
 
 ## Technologies
-I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the API documentation is not very good. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. I attempted to use the Autosave plugin as well, but I could not get it to work.
+I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the API documentation is not very good. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
 
 ## TODO
 - test Word pasting
 - change font
-- style button
+- style button and error/save
 - test in safari
 - add meta tag for mobile
 - implement spinner
 - add favicon
-- refactor
+- refactor!
 
 ## TODO at meetup
 - set up domain with heroku
@@ -22,6 +22,10 @@ I used Formspree to send emails without a backend, and CKEditor to add  word-pro
 
 ## Testing Formspree
 I realized that Formspree would not work if I tried to submit the form locally. I created a gh-pages branch and pushed to the corresponding remote (which I named Test, which I will now use for testing future projects that require a real domain) to test Formspree.
+
+## HTML5 Storage
+An amazing feature of HTML5 that allows the user to effectively save data onto the browser. No backend required! It even works if you quit out of the browser, if you use localStorage instead of sessionStorage. This was a valuable example for me: https://github.com/mdn/web-storage-demo/blob/gh-pages/main.js
+And the autosave plugin code turned out to be useful too: https://github.com/w8tcha/CKEditor-AutoSave-Plugin/blob/master/autosave/plugin.js
 
 ## Configuring the WordCount plugin
 I went into the ckeditor.js file and set maxWordCount to 300 and hardLimit to false to prevent the editor from preventing you to type more than 300 words (if you did this using the minified version, change the 0 to a 1). I also changed the < to a <= when checking for the word and char count limits in the else if statement, so that the limitRestored event would fire when the wordCount was equal to the maxWordCount. Otherwise, if the user types above the limit and then deletes until they reach the limit, the wordCount will still show up red. I did not bother with changing the wordCount display to green when the wordCount exactly matched the limit, since the display contains the paragraph count as well. A green, incorrect paragraph count could confuse users.

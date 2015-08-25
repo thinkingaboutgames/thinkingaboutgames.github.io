@@ -14,6 +14,7 @@
       <h1 class="ef">essay form</h1>
     </header>
     <ul id="errors" class="hidden"></ul>
+    <h3 id="save" class="hidden">Autosave Complete!</h3>
     <form>
       <ul class="id-fields">
         <li class="id-field-section clearfix">
@@ -58,42 +59,62 @@
   CKEDITOR.replace('essay-area');
   window.editor = CKEDITOR.instances["essay-area"];
 
-  if(!localStorage.getItem('essay')) {
-    populateStorage();
-    loadEssay();
-  } else {
-    loadEssay();
-  }
-
-  function populateStorage() {
-    localStorage.setItem('essay', editor.getData());
-  }
-
-  function loadEssay() {
-    var currentHTML = localStorage.getItem('essay');
-    editor.setData(currentHTML);
-  }
-
-  editor.on('change', startTimer);
-
-  function startTimer (event) {
-    if (timeoutID2) {
-      clearTimeout(timeoutID2);
+  function supportsLocalStorage() {
+    if (typeof (Storage) === 'undefined') {
+        return false;
     }
-    window.timeoutID2 = setTimeout(onTimer, 10000, event);
+
+    try {
+        localStorage.getItem("___test_key");
+        return true;
+    } catch (e) {
+        return false;
+    }
   }
 
-  window.savingActive = false;
-
-  function onTimer (event) {
-    if (savingActive) {
-      startTimer(event);
-    } else if (event.editor.checkDirty()) {
-      savingActive = true;
+  if (supportsLocalStorage()) {
+    if(!localStorage.getItem('essay')) {
       populateStorage();
-      savingActive = false;
+      loadEssay();
+    } else {
+      loadEssay();
     }
-  };
+
+    function populateStorage() {
+      localStorage.setItem('essay', editor.getData());
+    }
+
+    function loadEssay() {
+      var currentHTML = localStorage.getItem('essay');
+      editor.setData(currentHTML);
+    }
+
+    editor.on('change', startTimer);
+    window.storageTimeoutID = 0;
+
+    function startTimer (event) {
+      if (storageTimeoutID) {
+        clearTimeout(storageTimeoutID);
+      }
+      storageTimeoutID = setTimeout(onTimer, 10000, event);
+    }
+
+    window.savingActive = false;
+
+    function onTimer (event) {
+      if (savingActive) {
+        startTimer(event);
+      } else if (event.editor.checkDirty()) {
+        savingActive = true;
+        populateStorage();
+        $("#save").removeClass("hidden");
+        window.setTimeout(function () {
+          $("#save").addClass("hidden");
+        }, 3000);
+        savingActive = false;
+      }
+    };
+  }
 
   $("form").on("submit", function (event) {
     event.preventDefault();
@@ -122,7 +143,7 @@
           // alert("loading");
         },
         success: function(data) {
-          localStorage.removeItem("essay");
+          if (supportsLocalStorage()) { localStorage.removeItem("essay"); };
         }
       });
     } else {
