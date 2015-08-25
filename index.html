@@ -141,7 +141,10 @@
           // alert("loading");
         },
         success: function(data) {
-          if (supportsLocalStorage()) { localStorage.removeItem("essay"); };
+          if (supportsLocalStorage()) {
+            if (storageTimeoutID) { clearTimeout(storageTimeoutID); }
+            localStorage.removeItem("essay");
+          };
           window.location.href = window.location.href + "success.html";
         }
       });
