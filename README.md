@@ -1,16 +1,18 @@
 # Thinking About Games: Essay Form
 
 ## Technologies
-I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the API documentation is not very good. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
+I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
 
 ## TODO
-- test Word pasting
 - change font
 - style button and error/save
-- test in safari
+- test in all browsers
+- test quitting out of browser
+- add tab listener to essay area
 - add meta tag for mobile
 - implement spinner
 - add favicon
+- test in subway
 - refactor!
 
 ## TODO at meetup
@@ -18,13 +20,19 @@ I used Formspree to send emails without a backend, and CKEditor to add  word-pro
 - confirm email address with formspree
 - 4 p's w title or title + 3 p's? correct error msg too if 3 p's
 
+## What students will want to know
+- If they reply to their own message, they will be replying to themselves! This is just a quirk of using the same cc email as the reply_to email. But, if you are the one sending the message, the recipient will be as expected since the reply_to email was designated for your point of view.
+- They can probably use this on the subway! HTML5 woot! Just tell them to make sure to only submit when they have signal again.
+- Autosave is on the browser, not across devices.
+- Not being able to tab is annoying. There is a misleading button on the editor that seems like it will tab, but it just ends up tabbing the whole paragraph. Make sure they manually type in spaces for the tab effect.
+
 ## Features
 
 ## Testing Formspree
 I realized that Formspree would not work if I tried to submit the form locally. I created a gh-pages branch and pushed to the corresponding remote (which I named Test, which I will now use for testing future projects that require a real domain) to test Formspree.
 
 ## HTML5 Storage
-An amazing feature of HTML5 that allows the user to effectively save data onto the browser. No backend required! It even works if you quit out of the browser, if you use localStorage instead of sessionStorage. This was a valuable example for me: https://github.com/mdn/web-storage-demo/blob/gh-pages/main.js
+An amazing feature of HTML5 that allows the user to effectively save data onto the browser. No backend required! It even works if you quit out of the browser, as long as you use localStorage instead of sessionStorage. This was a valuable example for me: https://github.com/mdn/web-storage-demo/blob/gh-pages/main.js
 And the autosave plugin code turned out to be useful too: https://github.com/w8tcha/CKEditor-AutoSave-Plugin/blob/master/autosave/plugin.js
 
 ## Configuring the WordCount plugin

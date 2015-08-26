@@ -58,6 +58,19 @@
   CKEDITOR.replace('essay-area');
   window.editor = CKEDITOR.instances["essay-area"];
 
+  if (supportsLocalStorage()) {
+    if(!localStorage.getItem('essay')) {
+      populateStorage();
+      loadEssay();
+    } else {
+      loadEssay();
+    }
+
+    editor.on('change', startTimer);
+    window.storageTimeoutID = 0;
+    window.savingActive = false;
+  }
+
   function supportsLocalStorage() {
     if (typeof (Storage) === 'undefined') {
         return false;
@@ -71,49 +84,35 @@
     }
   }
 
-  if (supportsLocalStorage()) {
-    if(!localStorage.getItem('essay')) {
-      populateStorage();
-      loadEssay();
-    } else {
-      loadEssay();
-    }
-
-    function populateStorage() {
-      localStorage.setItem('essay', editor.getData());
-    }
-
-    function loadEssay() {
-      var currentHTML = localStorage.getItem('essay');
-      editor.setData(currentHTML);
-    }
-
-    editor.on('change', startTimer);
-    window.storageTimeoutID = 0;
-
-    function startTimer (event) {
-      if (storageTimeoutID) {
-        clearTimeout(storageTimeoutID);
-      }
-      storageTimeoutID = setTimeout(onTimer, 10000, event);
-    }
-
-    window.savingActive = false;
-
-    function onTimer (event) {
-      if (savingActive) {
-        startTimer(event);
-      } else if (event.editor.checkDirty()) {
-        savingActive = true;
-        populateStorage();
-        $("#save").removeClass("hidden");
-        window.setTimeout(function () {
-          $("#save").addClass("hidden");
-        }, 3000);
-        savingActive = false;
-      }
-    };
+  function populateStorage() {
+    localStorage.setItem('essay', editor.getData());
   }
+
+  function loadEssay() {
+    var currentHTML = localStorage.getItem('essay');
+    editor.setData(currentHTML);
+  }
+
+  function startTimer (event) {
+    if (storageTimeoutID) {
+      clearTimeout(storageTimeoutID);
+    }
+    storageTimeoutID = setTimeout(onTimer, 10000, event);
+  }
+
+  function onTimer (event) {
+    if (savingActive) {
+      startTimer(event);
+    } else if (event.editor.checkDirty()) {
+      savingActive = true;
+      populateStorage();
+      $("#save").removeClass("hidden");
+      window.setTimeout(function () {
+        $("#save").addClass("hidden");
+      }, 3000);
+      savingActive = false;
+    }
+  };
 
   $("form").on("submit", function (event) {
     event.preventDefault();
