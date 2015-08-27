@@ -23,7 +23,7 @@ body, h1, h3, label, ul, li, fieldset {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Nunito", sans-serif;
   background: #005EFF;
   text-align: center;
   padding: 20px;
@@ -149,7 +149,7 @@ textarea {
 }
 
 .submit:hover {
-  background: lightgreen;
+  background: #4EC74E;
   cursor: pointer;
 }
 
@@ -217,13 +217,18 @@ textarea {
 /*success page*/
 
 #success {
-  font-family: "Nunito", sans-serif;
+  max-width: 770px;
+  text-align: left;
+  color: #fff;
 }
 
 #success h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 42px;
   font-weight: 700;
 }
 
 #success .message {
+  font-size: 22px;
   font-weight: 400;
 }
