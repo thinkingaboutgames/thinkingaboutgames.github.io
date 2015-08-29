@@ -4,6 +4,7 @@
 I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the documentation is hard to pick through; I didn't end up using it much. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. Check out build-config.js for the full list of plugins I used. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
 
 ## TODO
+- test essay submission
 - add favicon
 - implement spinner
 - test in subway
