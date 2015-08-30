@@ -61,7 +61,6 @@ $("form").on("submit", function (event) {
   event.preventDefault();
   // get all data from the form
   var essayHTML = editor.getData();
-  console.log(essayHTML);
   // need to wrap html in a div to get the first level elements (in this case p's)
   var numParagraphs = $('<div>' + essayHTML + '</div>').find("p").length;
   var wordCount = editor.plugins.wordcount.wordCount;
@@ -73,6 +72,8 @@ $("form").on("submit", function (event) {
   // successful submission condition
   if (numParagraphs === 4 && wordCount === 300 && name && year && email &&
       typeof semester !== "undefined") {
+    // needed so that the form successfully gets the latest editor data
+    editor.updateElement();
     $("#subject").val(name + " [TAG] [" + semester + " " + year + "]");
     $("#cc").val(email);
     $.ajax({
@@ -80,17 +81,12 @@ $("form").on("submit", function (event) {
       method: 'POST',
       data: $(this).serialize(),
       dataType: 'json',
-      beforeSend: function() {
-        console.log(essayHTML);
-        console.log("this: " + this);
-      },
       success: function(data) {
         if (supportsLocalStorage()) {
           if (storageTimeoutID) { clearTimeout(storageTimeoutID); }
           localStorage.removeItem("essay");
         };
-        alert("success");
-        //window.location.href = window.location.href + "success.html";
+        window.location.href = window.location.href + "success.html";
       }
     });
   } else {
