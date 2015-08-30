@@ -6,15 +6,18 @@
     <link href="application.css" rel="stylesheet"/>
     <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://css-spinners.com/css/spinner/pong.css" type="text/css">
     <script src="ckeditor/ckeditor.js"></script>
   </head>
   <body>
+    <div id="spinner" class="pong-loader">Loading…</div>
+    <section class="spinner-modal"></section>
+    <ul id="errors" class="popup hidden"></ul>
+    <h3 id="save" class="popup hidden">Autosave Complete!</h3>
     <header class="clearfix">
       <h1 class="tag">Thinking About Games</h1>
       <h1 class="ef">essay form</h1>
     </header>
-    <ul id="errors" class="popup hidden"></ul>
-    <h3 id="save" class="popup hidden">Autosave Complete!</h3>
     <form>
       <ul class="id-fields">
         <li class="id-field-section clearfix">
@@ -52,4 +55,16 @@
     </form>
     <script src="main.js"></script>
   </body>
+  <script>
+    var $loading = $('#spinner').hide();
+    $(document)
+      .ajaxStart(function () {
+        $(".spinner-modal").addClass("is-open");
+        $loading.show();
+      })
+      .ajaxStop(function () {
+        $loading.hide();
+        $(".spinner-modal").removeClass("is-open");
+    });
+  </script>
 </html>

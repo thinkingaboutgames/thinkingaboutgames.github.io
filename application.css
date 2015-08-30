@@ -1,4 +1,4 @@
-body, h1, h3, label, ul, li, fieldset {
+body, h1, h3, label, ul, li, fieldset, div {
   border: 0;
   margin: 0;
   padding: 0;
@@ -10,6 +10,31 @@ body, h1, h3, label, ul, li, fieldset {
   color: inherit;
 
   background: transparent;
+}
+
+#spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.spinner-modal {
+  display: none;
+}
+
+.spinner-modal.is-open {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @font-face {

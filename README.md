@@ -4,7 +4,7 @@
 I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the documentation is hard to pick through; I didn't end up using it much. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. Check out build-config.js for the full list of plugins I used. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
 
 ## TODO
-- implement spinner
+- add mobile window sizing
 - change spacing between <p>'s
 - test in all browsers, test after quit
 - add favicon
@@ -67,6 +67,9 @@ $('<div>' + essayHTML + '</div>').find("p").length
 }
 ```
 4. Set ``` font-family: "anyname" ``` on the desired elements!
+
+## CSS Spinner
+I love http://www.css-spinners.com/. And, it happens to have a very appropriate spinner! Just make sure to write some jQuery and a bit of your own CSS to make it appear during ajax calls and in a modal, if that's what you want.
 
 ## Errors
 There is an error that pops up in the Chrome console when you do not fill out all of the required input fields. It looks like this:
