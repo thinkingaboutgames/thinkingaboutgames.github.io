@@ -1,4 +1,5 @@
 CKEDITOR.replace('essay-area');
+//CKEDITOR.replace('essay-area', { contentsCss: ["ckeditor/contents.css", "custom.css"] });
 window.editor = CKEDITOR.instances["essay-area"];
 
 if (supportsLocalStorage()) {
