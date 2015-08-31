@@ -178,7 +178,7 @@ textarea {
   cursor: pointer;
 }
 
-@media screen and (max-width: 630px), screen and (max-device-width: 630px) {
+@media (max-width: 630px) {
   header {
     width: 438px;
   }
@@ -189,7 +189,7 @@ textarea {
   }
 }
 
-@media screen and (max-width: 550px), screen and (max-device-width: 550px) {
+@media (max-width: 550px) {
   .id-field, .id-field:nth-child(even) {
     float: none;
     width: 210px;
@@ -197,7 +197,7 @@ textarea {
   }
 }
 
-@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+@media (max-width: 480px) {
   header {
     width: 360px;
   }
