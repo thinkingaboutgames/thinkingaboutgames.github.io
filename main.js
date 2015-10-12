@@ -104,7 +104,7 @@ $("form").on("submit", function (event) {
     if (wordCount !== 300) {
       $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
     }
-    if (numParagraphs !== 4) {
+    if (numParagraphs !== 3) {
       $("#errors").append("<li>Please make sure your essay is exactly 3 paragraphs.</li>");
     }
     // show errors
