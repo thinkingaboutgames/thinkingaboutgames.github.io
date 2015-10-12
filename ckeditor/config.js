@@ -28,16 +28,15 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
-
+	config.removeButtons = 'Underline,Subscript,Superscript,Cut,Copy,Scayt,Link,Unlink,Anchor,HorizontalRule,SpecialChar,Image,Maximize,Source,Strike,NumberedList,RemoveFormat,Outdent,Indent,BulletedList,Blockquote,Styles,Format,About,Paste,PasteText,PasteFromWord,Table,Undo,Redo,Find,Replace,SelectAll,Print,Smiley,PageBreak,ShowBlocks,Font,FontSize,TextColor,BGColor';
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-	
+
 	// custom config
 	config.height = 500;
   config.tabSpaces = 12;
-  config.removePlugins = 'autosave,save';
+  config.removePlugins = 'autosave,save,justify,bidi';
 };

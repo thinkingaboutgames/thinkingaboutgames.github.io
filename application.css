@@ -38,18 +38,16 @@ body, h1, h3, label, ul, li, fieldset, div {
 }
 
 @font-face {
- font-family: Blox;
- src: url("fonts/Blox2.eot");
-}
-
-@font-face {
- font-family: Blox;
- src: url("fonts/Blox2.ttf");
+  font-family: 'Trebuchet MS';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Trebuchet MS'), url('fonts/trebuc.woff') format('woff');
 }
 
 body {
-  font-family: "Nunito", sans-serif;
-  background: #005EFF;
+  font-family: "Trebuchet MS", "Times New Roman", Times, sans-serif;
+  background: #fff;
+  color: #000;
   text-align: center;
   padding: 20px;
 }
@@ -70,20 +68,18 @@ header {
 }
 
 h1 {
-  font-family: "Blox";
+  font-family: "Times New Roman", Times, sans-serif;
   font-size: 36px;
 }
 
 .tag {
   float: left;
   padding: 8px;
-  color: #00FFF6;
 }
 
 .ef {
   float: left;
   padding: 8px;
-  color: #FFD900;
 }
 
 form {
@@ -99,23 +95,13 @@ label, input {
 
 label {
   text-align: left;
-  font-weight: 700;
   font-size: 20px;
-  color: #fff;
 }
 
 .fall, .spring {
   display: inline-block;
   font-weight: 400;
   font-size: 18px;
-}
-
-.fall {
-  color: orange;
-}
-
-.spring {
-  color: lightgreen;
 }
 
 input[type="radio"] {
@@ -165,16 +151,17 @@ textarea {
   margin-top: 10px;
   width: 100px;
   padding: 5px 10px;
-  background: green;
+  background: #009EFB;
   color: #fff;
+  font-family: "Trebuchet MS", "Times New Roman", Times, sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 5px;
-  border: 3px solid #fff;
+  border: 1px solid #000;
 }
 
 .submit:hover {
-  background: #4EC74E;
+  background: #00DCFF;
   cursor: pointer;
 }
 
@@ -247,7 +234,7 @@ textarea {
 }
 
 #success h1 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Times New Roman", Times, sans-serif;
   font-size: 42px;
   font-weight: 700;
 }

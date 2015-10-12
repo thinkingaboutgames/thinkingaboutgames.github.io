@@ -43,6 +43,8 @@ VERY IMPORTANT: I realized at some point that the content from the editor would 
 editorInstance.updateElement();
 ```
 
+The toolbar configurator on the CKEditor website http://ckeditor.com/tmp/4.5.0-beta/ckeditor/samples/toolbarconfigurator/index.html#basic is an easy-to-use tool that lets you visually customize which buttons you want on your toolbar, giving you the resulting config.js file when you're done.
+
 ## Configuring the WordCount plugin
 I went into the ckeditor.js file and set maxWordCount to 300 and hardLimit to false to prevent the editor from preventing you to type more than 300 words (if you did this using the minified version, change the 0 to a 1). I also changed the < to a <= when checking for the word and char count limits in the else if statement, so that the limitRestored event would fire when the wordCount was equal to the maxWordCount. Otherwise, if the user types above the limit and then deletes until they reach the limit, the wordCount will still show up red. I did not bother with changing the wordCount display to green when the wordCount exactly matched the limit, since the display contains the paragraph count as well. A green, incorrect paragraph count could confuse users.
 

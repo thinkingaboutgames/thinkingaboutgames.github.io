@@ -1,5 +1,5 @@
 CKEDITOR.replace('essay-area');
-//CKEDITOR.replace('essay-area', { contentsCss: ["ckeditor/contents.css", "custom.css"] });
+
 window.editor = CKEDITOR.instances["essay-area"];
 
 if (supportsLocalStorage()) {
@@ -70,12 +70,13 @@ $("form").on("submit", function (event) {
   var year = $("#year").val();
   var email = $("#email").val();
   var semester = $('input[name=semester]:checked').val();
+  var reading = $("#reading").val();
   // successful submission condition
-  if (numParagraphs === 4 && wordCount === 300 && name && year && email &&
-      typeof semester !== "undefined") {
+  if (numParagraphs === 3 && wordCount === 300 && name && year && email &&
+      typeof semester !== "undefined" && reading) {
     // needed so that the form successfully gets the latest editor data
     editor.updateElement();
-    $("#subject").val(name + " [TAG] [" + semester + " " + year + "]");
+    $("#subject").val(name + " [TAG] [" + semester + " " + year + "] [" + reading + "]");
     $("#cc").val(email);
     $.ajax({
       url: "//formspree.io/fmw212@nyu.edu",
@@ -97,15 +98,14 @@ $("form").on("submit", function (event) {
       $("#errors").empty();
     }
     // needed for IE 8 and 9
-    if (!name || !year || !email || typeof semester === "undefined") {
+    if (!name || !year || !email || typeof semester === "undefined" || !reading) {
       $("#errors").append("<li>Please fill in all fields.</li>");
     }
     if (wordCount !== 300) {
       $("#errors").append("<li>Please make sure your essay is exactly 300 words.</li>");
     }
     if (numParagraphs !== 4) {
-      $("#errors").append("<li>Please include a title and exactly 3 paragraphs.</li>" +
-                          "<li>(This will show up as 4 paragraphs in the editor)</li>");
+      $("#errors").append("<li>Please make sure your essay is exactly 3 paragraphs.</li>");
     }
     // show errors
     $("#errors").removeClass("hidden");
