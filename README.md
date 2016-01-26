@@ -3,17 +3,6 @@
 ## Technologies
 I used Formspree to send emails without a backend, and CKEditor to add  word-processing features to the textarea. CKEditor is an amazing tool that is very customizable - check it out! The biggest downside is that the documentation is hard to pick through; I didn't end up using it much. I added the WordCount plugin and removed a few of the included plugins of the full preset to make the customized editor you see in this project. Check out build-config.js for the full list of plugins I used. I attempted to use the Autosave plugin as well, but I could not get it to work. But, I was able to implement autosave myself using HTML5's localStorage!
 
-## TODO
-- change spacing between <p>'s
-- test in all browsers, test after quit
-- add favicon
-- refactor!
-
-## TODO at meetup
-- set up domain with heroku
-- confirm email address with formspree
-- 4 p's w title or title + 3 p's? correct error msg too if 3 p's
-
 ## What students will want to know
 - If they reply to their own message, they will be replying to themselves! This is just a quirk of using the same cc email as the reply_to email. But, if you are the one sending the message, the recipient will be as expected since the reply_to email was designated for your point of view.
 - They can use this on the subway! HTML5 woot! Just tell them to make sure to only submit when they have signal again.

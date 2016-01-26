@@ -79,7 +79,7 @@ $("form").on("submit", function (event) {
     $("#subject").val(name + " [TAG] [" + semester + " " + year + "] [" + reading + "]");
     $("#cc").val(email);
     $.ajax({
-      url: "//formspree.io/fmw212@nyu.edu",
+      url: "//formspree.io/charlesjpratt@nyu.edu",
       method: 'POST',
       data: $(this).serialize(),
       dataType: 'json',
